@@ -1,6 +1,5 @@
 // Part of RCEFShaders mod
 
-// ---- Created with 3Dmigoto v1.3.16 on Sat Apr 18 16:38:02 2026
 Texture3D<float4> t29 : register(t29);
 
 Texture2D<float4> t28 : register(t28);
@@ -123,8 +122,8 @@ cbuffer cb0 : register(b0)
 #define cmp -
 Texture1D<float4> IniParams : register(t120);
 
-#define UNLIT IniParams[160].x
-#define NOFOG IniParams[161].x
+#define UNLIT IniParams[186].x
+#define NOFOG IniParams[186].y
 
 
 void main(
