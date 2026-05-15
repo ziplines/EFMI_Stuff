@@ -1,4 +1,4 @@
-// Part of fog removal
+// Part of RCEFShaders mod
 
 // ---- Created with 3Dmigoto v1.3.16 on Sat Apr 18 16:26:51 2026
 Texture3D<float4> t27 : register(t27);
@@ -102,12 +102,24 @@ cbuffer cb0 : register(b0)
 #define cmp -
 Texture1D<float4> IniParams : register(t120);
 
+#define UNLIT IniParams[160].x
+#define NOFOG IniParams[161].x
+
 
 void main(
   float4 v0 : SV_Position0,
   float2 v1 : TEXCOORD0,
   out float4 o0 : SV_Target0)
 {
+  if (UNLIT == 1) {
+    float4 r0;
+    r0.xy = (uint2)v0.xy;
+    r0.z = 0;
+    r0.xyz = t26.Load(r0.xyz).xyz;
+    o0 = float4(r0.x, r0.y, r0.z, 1.0);
+    return;
+  }
+  
   float4 r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13,r14,r15,r16,r17,r18,r19,r20,r21,r22,r23;
   uint4 bitmask, uiDest;
   float4 fDest;
@@ -1390,8 +1402,13 @@ void main(
   r4.xyz = float3(255,255,255) * r4.xyz;
   r2.xyz = float3(1,1,1) + -r2.xyz;
   r2.xyz = r4.xyz * r2.xyz;
-  r0.xyz = r2.xyz * r2.www + r0.xyw;  // This line combines the fog!
-  r0.xyz = r2.xyz;                    // So we remove it here
+
+  if (NOFOG == 1) {
+    r0.xyz = r2.xyz;
+  } else {
+    r0.xyz = r2.xyz * r2.www + r0.xyw;
+  }
+  
   r0.xyz = r1.xyz * r3.xyz + r0.xyz;
   r0.w = dot(r3.xyz, float3(0.333333343,0.333333343,0.333333343));
   r1.w = dot(r6.yzw, r6.yzw);

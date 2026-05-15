@@ -1,4 +1,4 @@
-// Makes AIC mode borders (region/eviction borders) more visible
+// Makes AIC mode borders (region/eviction borders) more visible for 1.2
 
 // ---- Created with 3Dmigoto v1.3.16 on Thu Apr 16 23:36:28 2026
 Texture2D<float4> t4 : register(t4);
