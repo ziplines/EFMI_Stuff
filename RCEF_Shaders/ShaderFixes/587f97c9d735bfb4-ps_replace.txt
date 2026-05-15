@@ -1402,13 +1402,7 @@ void main(
   r4.xyz = float3(255,255,255) * r4.xyz;
   r2.xyz = float3(1,1,1) + -r2.xyz;
   r2.xyz = r4.xyz * r2.xyz;
-
-  if (NOFOG == 1) {
-    r0.xyz = r2.xyz;
-  } else {
-    r0.xyz = r2.xyz * r2.www + r0.xyw;
-  }
-  
+  r0.xyz = r2.xyz * r2.www + r0.xyw;
   r0.xyz = r1.xyz * r3.xyz + r0.xyz;
   r0.w = dot(r3.xyz, float3(0.333333343,0.333333343,0.333333343));
   r1.w = dot(r6.yzw, r6.yzw);
@@ -1424,7 +1418,13 @@ void main(
   r2.x = 1 + r0.w;
   r1.w = min(r2.x, r1.w);
   r0.xyz = r0.xyz + -r1.xyz;
-  o0.xyz = r1.www * r0.xyz + r1.xyz;
+
+  if (NOFOG == 1) {
+    o0.xyz = r1.xyz;
+  } else {
+    o0.xyz = r1.www * r0.xyz + r1.xyz;
+  }
+
   o0.w = r0.w;
   return;
 }
