@@ -1,4 +1,4 @@
-// ShaderFix for RCEFVision.ini mod (1.4)
+// Full Region Borders ShaderFix for RCEFVision.ini mod (1.4)
 
 Texture2D<float4> t4 : register(t4);
 Texture2D<float4> t3 : register(t3);
