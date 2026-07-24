@@ -1,0 +1,21 @@
+------------------- Default Keybinds -------------------
+
+[Alt] + [End]: Show/Hide this Menu
+	- Edit Inside: RCEFVision.ini
+
+[Alt] + [Numpad 1]: Solid Region/Eviction Wall
+	(Requres to be in AIC Mode)
+	- Edit Inside: AICDisplay.ini
+
+[Alt] + [Numpad 2]: Solid AIC Tiles
+	(Requres to be in AIC Mode)
+	- Edit Inside: AICDisplay.ini
+
+[Alt] + [Numpad 4]: Unlit World View
+	- Edit Inside: UnlitView.ini
+
+[Alt] + [Numpad 5]: No Foliage
+	- Edit Inside: NoFoliage.ini
+
+[Alt] + [Numpad 7]: No Game UI
+	- Edit Inside: NoGameUI.ini

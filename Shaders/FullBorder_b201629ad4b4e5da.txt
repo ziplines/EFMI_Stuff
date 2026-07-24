@@ -1,0 +1,31 @@
+// CustomShader for RCEFVision.ini mod (1.4)
+
+void main(
+  float4 v0 : SV_Position0,
+  float4 v1 : TEXCOORD0,
+  float4 v2 : TEXCOORD1,
+  float4 v3 : TEXCOORD2,
+  float4 v4 : TEXCOORD3,
+  float4 v5 : TEXCOORD4,
+  float4 v6 : TEXCOORD5,
+  nointerpolation uint v7 : TEXCOORD6,
+  out float4 o0 : SV_Target0,
+  out float4 o1 : SV_Target1)
+{
+  // ---- Editable params ----
+  float Opacity = 0.1;                    // 0..1
+  float3 ColorA = float3(0.1, 0.1, 0.5);  // RGB 0..1
+  float3 ColorB = float3(0.5, 0.1, 0.1);  // RGB 0..1
+  float bias = 2.0;                       // Preferably leave unchanged. Makes it so its not a solid color in odd angles
+  // --------------------------
+
+  float3 vec = v0.xyz / v0.w;
+  float dzdx = abs(ddx(vec.z));
+  float dzdy = abs(ddy(vec.z));
+  float t = step(dzdy * bias, dzdx);
+
+  o0 = float4(lerp(ColorA, ColorB, t), Opacity);
+  o1 = float4(0.0, 0.0, 1.0, 0.0); // Don't touch, its a motion vector output
+
+  return;
+}
