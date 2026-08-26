@@ -28,16 +28,16 @@ void main(
   out float4 o0 : SV_Target0,
   out float4 o1 : SV_Target1)
 {
-  // ---- Editable params ----
-  float Opacity = 1.0;
-  float3 ColorA = float3(0.5, 0.0, 0.5);  // red tiles
-  float3 ColorB = float3(0.5, 0.5, 0.0);  // white tiles
-  float sideShade = 0.5;                  // brightness multiplier for side faces
+  // ----- Editable params -----
+  float Opacity = 1.0;                    // Slice opacity [0..1]
+  float3 ColorA = float3(0.5, 0.0, 0.5);  // Invalid tiles color [RGB 0..1]
+  float3 ColorB = float3(0.5, 0.5, 0.0);  // Valid tiles color [RGB 0..1]
+  float sideShade = 0.5;                  // Brightness multiplier for the side shading [0..1]
 
-  float sliceTop = -0.1;                  // -0.5 (bottom) .. 0.5 (top)
-  float sliceHalfSize = 0.5;              // Half size of the slices, 0.5 is entire tile, lower is smaller
-  float sliceDepth = 1.0;                 // How far the slize extends downward from sliceTop
-  // --------------------------
+  float sliceTop = -0.1;                  // Height of the top face of the slice [-0.5 (bottom) .. 0.5 (top)]
+  float sliceHalfSize = 0.5;              // Half size of the slices [0..0.5]
+  float sliceDepth = 1.0;                 // How far the slize extends downward from sliceTop [0..inf]
+  // ---------------------------
 
   // World position from this pixel's own screen pos + depth
   float2 screenUV = cb1[0].zw * v0.xy;
