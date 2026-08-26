@@ -1,0 +1,32 @@
+{
+    "Component0_IB": {
+        "semantics": [
+            {
+                "name": "INDEX",
+                "index": 0,
+                "format": "R16_UINT",
+                "stride": 6
+            }
+        ]
+    },
+    "Component0_VB0": {
+        "semantics": [
+            {
+                "name": "POSITION",
+                "index": 0,
+                "format": "R32G32B32_FLOAT",
+                "stride": 12
+            }
+        ]
+    },
+    "Component0_VB1": {
+        "semantics": [
+            {
+                "name": "TEXCOORD",
+                "index": 0,
+                "format": "R32G32_FLOAT",
+                "stride": 8
+            }
+        ]
+    }
+}
